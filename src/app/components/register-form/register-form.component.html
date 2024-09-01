@@ -1,0 +1,62 @@
+<form [formGroup]="registerForm" (submit)="onSubmit()">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      aria-describedby="emailHelp"
+      formControlName="email"
+    />
+    @if(email?.invalid && (email?.dirty || email?.touched)){
+    <div class="text-danger text-sm">
+      @if(email?.hasError('required')){Email is required}
+      @if(email?.hasError('email')){Email is invalid}
+    </div>
+    }
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+      autocomplete="password"
+    />
+    @if(password?.invalid && (password?.dirty || password?.touched)){
+    <div class="text-danger text-sm">
+      @if(password?.hasError('required')){Password is required}
+    </div>
+    }@else if(registerForm.hasError('passwordsMatch') && (password?.dirty ||
+    password?.touched)){
+    <div class="text-danger text-sm">Passwords do not match</div>
+
+    }
+  </div>
+  <div class="mb-3">
+    <label for="passwordConfirm" class="form-label">Password Confirm</label>
+    <input
+      type="password"
+      class="form-control"
+      id="passwordConfirm"
+      formControlName="passwordConfirm"
+      autocomplete="passwordConfirm"
+    />
+    @if(passwordConfirm?.invalid && (passwordConfirm?.dirty ||
+    passwordConfirm?.touched)){
+    <div class="text-danger text-sm">
+      @if(passwordConfirm?.hasError('required')){Password confirmation is
+      required}
+    </div>
+    }
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="!registerForm.valid"
+  >
+    Submit
+  </button>
+</form>

@@ -1,0 +1,45 @@
+<form [formGroup]="loginForm" (submit)="onSubmit()">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      aria-describedby="emailHelp"
+      formControlName="email"
+    />
+    @if(email?.invalid && (email?.dirty || email?.touched)){
+    <div class="text-danger text-sm">
+      @if(email?.hasError('required')){Email is required}
+      @if(email?.hasError('email')){Email is invalid}
+    </div>
+    }
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+      autocomplete="password"
+    />
+    @if(password?.invalid && (password?.dirty || password?.touched)){
+    <div class="text-danger text-sm">
+      @if(password?.hasError('required')){Password is required}
+    </div>
+    }@else if(loginForm.hasError('passwordsMatch') && (password?.dirty ||
+    password?.touched)){
+    <div class="text-danger text-sm">Passwords do not match</div>
+
+    }
+  </div>
+  @if(errorMsg){
+  <div class="text-danger text-sm">
+    {{ errorMsg }}
+  </div>
+  }
+  <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
+    Submit
+  </button>
+</form>
