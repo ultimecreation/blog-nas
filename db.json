@@ -10,12 +10,20 @@
     {
       "id": "1",
       "title": "a title",
-      "views": 100
+      "content": "content for post 1 ",
+      "author_id": "1bbe3274-e5f8-4c05-83f4-12ea8421754c"
     },
     {
       "id": "2",
       "title": "another title",
-      "views": 200
+      "content": "content for post 2",
+      "author_id": "1bbe3274-e5f8-4c05-83f4-12ea8421754c"
+    },
+    {
+      "id": "ecea47bb-f772-48c8-bbd7-6b259bc32b3e",
+      "title": "title 3",
+      "content": "content for post 3 . Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quidem sunt.\nNeque, ullam. Rem omnis, voluptatum quidem nesciunt veritatis architecto itaque\nnobis quod culpa recusandae neque eveniet nam, ullam provident molestias, fuga\ndolorem quae maiores assumenda aliquid vitae. Eos eveniet voluptates nulla nemo\nalias, aut assumenda earum eaque quae corrupti!\n",
+      "author_id": "1bbe3274-e5f8-4c05-83f4-12ea8421754c"
     }
   ],
   "comments": [

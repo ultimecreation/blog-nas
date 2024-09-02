@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { HomeComponent } from "./pages/home/home.component";
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,13 @@ import { HomeComponent } from "./pages/home/home.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  private authService = inject(AuthService)
   title = 'blog-nas';
+
+  ngOnInit(): void {
+    if (this.authService.getLoggedUser()) {
+      this.authService.isAuthenticated.set(true)
+    }
+  }
 }

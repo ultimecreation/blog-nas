@@ -1,1 +1,42 @@
-<p>post-add works!</p>
+<form (submit)="onSubmit($event)">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      #titleField="ngModel"
+      [ngModel]="title()"
+      [ngModelOptions]="{ standalone: true }"
+      (ngModelChange)="title.set($event)"
+      required
+    />
+    @if(titleField.touched && titleField.hasError('required')){
+    <div class="text-danger text-sm">Title is required</div>
+    }
+  </div>
+
+  <div class="mb-3">
+    <label for="content" class="form-label">Content</label>
+    <textarea
+      class="form-control"
+      id="content"
+      rows="3"
+      #contentField="ngModel"
+      [ngModel]="content()"
+      [ngModelOptions]="{ standalone: true }"
+      (ngModelChange)="content.set($event)"
+      required
+    ></textarea>
+    @if(contentField.touched && titleField.hasError('required')){
+    <div class="text-danger">Content is required</div>
+    }
+  </div>
+
+  <button
+    class="btn btn-primary"
+    [disabled]="!titleField.valid || !contentField.valid"
+  >
+    Save
+  </button>
+</form>
