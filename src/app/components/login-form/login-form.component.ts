@@ -40,7 +40,8 @@ export class LoginFormComponent {
         if (data.length === 1) {
           delete data[0].password
           this.authService.setLoggedUser(data[0])
-          window.location.replace('/')
+          this.authService.isAuthenticated.set(true)
+          this.router.navigateByUrl('/')
         } else {
           this.errorMsg = "Invalid credentials"
         }

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { User } from '../types/User';
 
 @Injectable({
@@ -7,6 +7,7 @@ import { User } from '../types/User';
 })
 export class AuthService {
   public loggedUser: any = null
+  public isAuthenticated = signal(false)
   constructor(private httpClient: HttpClient) { }
 
   register(user: User) {
@@ -18,6 +19,7 @@ export class AuthService {
   }
 
   logout() {
+    this.isAuthenticated.set(false)
     return localStorage.removeItem('auth')
   }
 
@@ -31,5 +33,7 @@ export class AuthService {
   setLoggedUser(user: { id: string, email: string }) {
     return localStorage.setItem('auth', JSON.stringify(user))
   }
+
+
 
 }
