@@ -16,4 +16,8 @@ export class PostsService {
   savePost(post: Post) {
     return this.httpClient.post<{ post: Post }>('http://localhost:3000/posts', post)
   }
+
+  deletePost(id: string) {
+    return this.httpClient.delete<{ post: Post }>(`http://localhost:3000/posts/${id}`)
+  }
 }

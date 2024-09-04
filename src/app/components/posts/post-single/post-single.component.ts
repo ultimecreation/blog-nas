@@ -1,6 +1,8 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, EventEmitter, inject, Input, input, Output } from '@angular/core';
 import { Post } from '../../../types/Post';
 import { RouterLink } from '@angular/router';
+import { PostsService } from '../../../services/posts.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-post-single',
@@ -10,10 +12,20 @@ import { RouterLink } from '@angular/router';
 })
 export class PostSingleComponent {
 
+  private postsService = inject(PostsService)
   @Input() post!: Post
+  @Output() refetchPosts = new EventEmitter()
 
   handleDeletePost(e: Event, id: string) {
     e.preventDefault()
-    console.log(id)
+    this.postsService.deletePost(id).subscribe({
+      next: (data) => {
+        this.refetchPosts.emit()
+      },
+      error: (httpError: HttpErrorResponse) => {
+        console.log(httpError.message)
+      }
+    })
+
   }
 }

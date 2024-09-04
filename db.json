@@ -14,15 +14,21 @@
       "author_id": "1bbe3274-e5f8-4c05-83f4-12ea8421754c"
     },
     {
-      "id": "2",
-      "title": "another title",
-      "content": "content for post 2",
+      "id": "f2848d18-2cd7-4b79-b9ad-fa331b806312",
+      "title": "title 1",
+      "content": "content for post 1",
       "author_id": "1bbe3274-e5f8-4c05-83f4-12ea8421754c"
     },
     {
-      "id": "ecea47bb-f772-48c8-bbd7-6b259bc32b3e",
+      "id": "f563bfeb-1a42-4d1b-aed5-b711cf88e7bc",
+      "title": "title 2",
+      "content": "content for title 2",
+      "author_id": "1bbe3274-e5f8-4c05-83f4-12ea8421754c"
+    },
+    {
+      "id": "a66db52a-f8d5-493d-9606-c3b701f18151",
       "title": "title 3",
-      "content": "content for post 3 . Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quidem sunt.\nNeque, ullam. Rem omnis, voluptatum quidem nesciunt veritatis architecto itaque\nnobis quod culpa recusandae neque eveniet nam, ullam provident molestias, fuga\ndolorem quae maiores assumenda aliquid vitae. Eos eveniet voluptates nulla nemo\nalias, aut assumenda earum eaque quae corrupti!\n",
+      "content": "content for post 3",
       "author_id": "1bbe3274-e5f8-4c05-83f4-12ea8421754c"
     }
   ],

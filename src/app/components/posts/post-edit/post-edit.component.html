@@ -1,1 +1,42 @@
-<p>post-edit works!</p>
+<h1>Edit post</h1>
+
+<form #form="ngForm" (submit)="submit($event)">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      #titleField="ngModel"
+      [(ngModel)]="formValues().title"
+      [ngModelOptions]="{ standalone: true }"
+      required
+    />
+    @if(titleField.touched && titleField.hasError('required')){
+    <div class="text-danger text-sm">Title is required</div>
+    }
+  </div>
+
+  <div class="mb-3">
+    <label for="content" class="form-label">Content</label>
+    <textarea
+      class="form-control"
+      id="content"
+      rows="3"
+      #contentField="ngModel"
+      [(ngModel)]="formValues().content"
+      [ngModelOptions]="{ standalone: true }"
+      required
+    ></textarea>
+    @if(contentField.touched && contentField.hasError('required')){
+    <div class="text-danger">Content is required</div>
+    }
+  </div>
+
+  <button
+    class="btn btn-primary"
+    [disabled]="!titleField.valid || !contentField.valid"
+  >
+    Save
+  </button>
+</form>

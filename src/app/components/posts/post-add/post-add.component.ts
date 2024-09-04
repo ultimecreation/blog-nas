@@ -5,6 +5,7 @@ import { Post } from '../../../types/Post';
 import { v4 } from 'uuid';
 import { AuthService } from '../../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-add',
@@ -15,7 +16,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class PostAddComponent {
   private postsService = inject(PostsService)
   protected loggedUser = inject(AuthService).getLoggedUser()
-
+  private router = inject(Router)
   public title = model('')
   public content = model('')
 
@@ -30,7 +31,7 @@ export class PostAddComponent {
     this.postsService.savePost(newPost).subscribe({
       next: (data: any) => {
         if (data.id) {
-
+          this.router.navigateByUrl('/')
         }
       },
       error: (httpError: HttpErrorResponse) => {
